@@ -1,5 +1,7 @@
+require "rest-client"
 require "workpoint/version"
+require "workpoint/connection"
+require "workpoint/exceptions"
+require "workpoint/job"
 
-module Workpoint
-  # Your code goes here...
-end
+module Workpoint; end
