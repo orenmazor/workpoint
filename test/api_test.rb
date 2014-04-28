@@ -1,3 +1,4 @@
+require 'uri'
 require "#{File.dirname(__FILE__)}/test_helper"
 
 class JobTest < MiniTest::Unit::TestCase
@@ -7,9 +8,20 @@ class JobTest < MiniTest::Unit::TestCase
     end
   end
 
-  def test_job_attempts_scheduling
-    RestClient.expects(:post)
+  def test_job_successfully_schedules_job
+    RestClient.expects(:post).once.with do |url, parameters, headers|
+      assert URI.parse(url)
+      assert_equal "asdf", headers["ApiKey"]
+    end
+    Workpoint::Api.api_key = "asdf"
     Workpoint::Job.new(valid_attributes).schedule!
+    Workpoint::Api.api_key = nil
+  end
+
+  def test_job_attempts_scheduling_without_api_key
+    assert_raises Workpoint::NoApiKeyError do
+      Workpoint::Job.new(valid_attributes).schedule!
+    end
   end
 
   private
