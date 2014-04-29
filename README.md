@@ -1,6 +1,6 @@
 # Workpoint
 
-TODO: Write a gem description
+An extremely rough wrapper around TouchIN2's Workpoint API. 
 
 ## Installation
 
@@ -18,7 +18,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Don't!
+
+Experimental!
+
+Seriously!
 
 ## Contributing
 
