@@ -15,7 +15,6 @@ class JobTest < MiniTest::Unit::TestCase
     end
     Workpoint::Api.api_key = "asdf"
     Workpoint::Job.new(valid_attributes).schedule!
-    Workpoint::Api.api_key = nil
   end
 
   def test_job_attempts_scheduling_without_api_key
